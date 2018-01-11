@@ -1,10 +1,8 @@
-# Coinmetrics tools
-
-Repository for software created by coinmetrics.io team.
-
 ## Coincrawler
 
-Coincrawler is a set of programs used for data extraction from blockchains and block explorers. Transaction volume, transaction count, fees and several other metrics are computed for each block and stored in the database. Additionaly, the suite contains utilities for grabbing price and exchange volume data, and dumping the obtained information to CSV file.
+Warning: this is a legacy tool, coinmetrics.io is going to switch to more robust system in the nearest future.
+
+Coincrawler is a set of programs used for data extraction from blockchains and block explorers. Transaction volume, transaction count, fees and amount of generated coins are computed for each block and stored in the Postgres database. Additionaly, the suite contains utilities for grabbing price and exchange volume data from coinmarketcap.com, and dumping the obtained information to CSV file.
 
 ### Prerequisites 
 
@@ -13,15 +11,11 @@ Python modules: psycopg2, bs4, python-dateutil, lmdb, requests.
 
 ### Supported cryptocurrencies
 
-Coincrawler supports Bitcoin, Bitcoin Cash, Litecoin, Dash, PIVX, Monero, Dogecoin, Decred, XEM, Ethereum, Ethereum Classic, ZCash, Vertcoin and, probably, many other currencies based on Bitcoin or Ethereum code.
+Coincrawler supports Bitcoin, Bitcoin Cash, Bitcoin Gold, Litecoin, Dash, PIVX, Monero, Dogecoin, Decred, NEM, Ethereum, Ethereum Classic, ZCash, Vertcoin, Verge, Digibyte and, probably, many other currencies based on Bitcoin or Ethereum code.
 
-Bitcoin, Bitcoin Cash, Litecoin, Dash, Dogecoin, PIVX, ZCash, Vertcoin and Ethereum Classic data is fetched from blockchains via RPC API.
+Data for all cryptocurrencies, except NEM and Decred, is fetched from blockchains via RPC API.
 
 Decred and XEM data is fetched from block explorers https://mainnet.decred.org and http://chain.nem.ninja respectively.
-
-Ethereum data can be fetched either from blockchain or https://etherchain.org. 
-
-Monero data can be fetched either from blockchain or https://moneroexplorer.com.
 
 ### How to use
 
