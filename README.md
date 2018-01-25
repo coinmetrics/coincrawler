@@ -1,6 +1,6 @@
 ## Coincrawler
 
-Warning: this is a legacy tool, coinmetrics.io is going to switch to more robust system in the nearest future.
+Warning: while coincrawler is still used by coinmetrics team, we consider it a legacy tool, which will soon be replaced by more robust systems.
 
 Coincrawler is a set of programs used for data extraction from blockchains and block explorers. Transaction volume, transaction count, fees and amount of generated coins are computed for each block and stored in the Postgres database. Additionaly, the suite contains utilities for grabbing price and exchange volume data from coinmarketcap.com, and dumping the obtained information to CSV file.
 
