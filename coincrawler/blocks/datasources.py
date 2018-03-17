@@ -154,6 +154,9 @@ class EthereumBlockchainDataSource(IDataSource):
 		else:
 			return 3.0
 
+	def getUncleMinerReward(self, uncleHeight, blockHeight, baseReward):
+		return baseReward * (uncleHeight + 8 - blockHeight) / 8
+
 	def getBlockHeight(self):
 		return self.networkBlocksCount
 
@@ -187,7 +190,7 @@ class EthereumBlockchainDataSource(IDataSource):
 			uncles = self.ethereumAccess.bulkCall([("eth_getUncleByBlockNumberAndIndex", [hex(height), hex(i)]) for i in xrange(unclesCount)])
 			numbers = [int(uncle['number'], base=16) for uncle in uncles]
 			for n in numbers:
-				unclesReward += baseReward * (n + 8 - height) / 8
+				unclesReward += self.getUncleMinerReward(n, height, baseReward)
 		generatedCoins += unclesReward
 
 		return {"height": height, "timestamp": blockTimestamp, "txVolume": txVolume, "txCount": txCount, "generatedCoins": generatedCoins, "fees": fees, "difficulty": difficulty}
@@ -196,7 +199,14 @@ class EthereumBlockchainDataSource(IDataSource):
 class EthereumClassicBlockchainDataSource(EthereumBlockchainDataSource):
 
 	def getBaseBlockReward(self, height):
-		return 5.0
+		era = (height - 1) / 5000000
+		return 5.0 * (0.8**era) 
+
+	def getUncleMinerReward(self, uncleHeight, blockHeight, baseReward):
+		if blockHeight <= 5000000:
+			return super(EthereumClassicBlockchainDataSource, self).getUncleMinerReward(uncleHeight, blockHeight, baseReward)
+		else:
+			return baseReward / 32.0
 
 
 class MoneroBlockchainDataSource(IDataSource):
