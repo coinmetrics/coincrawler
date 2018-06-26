@@ -1,6 +1,6 @@
 ## Coincrawler
 
-**Warning**: this is a legacy software which is no longer used by coinmetrics.io. We currently utilize [Haskell](https://github.com/coinmetrics-io/haskell-tools) and [Python](https://github.com/coinmetrics-io/python-tools) tools for data extraction and aggregation.
+**Warning**: this is a legacy software that is no longer used and supported by coinmetrics.io. We currently utilize [Haskell](https://github.com/coinmetrics-io/haskell-tools) and [Python](https://github.com/coinmetrics-io/python-tools) tools for data extraction and aggregation.
 
 Coincrawler is a set of programs used for data extraction from blockchains and block explorers. Transaction volume, transaction count, fees and amount of generated coins are computed for each block and stored in the Postgres database. Additionaly, the suite contains utilities for grabbing price and exchange volume data from coinmarketcap.com, and dumping the obtained information to CSV file.
 
